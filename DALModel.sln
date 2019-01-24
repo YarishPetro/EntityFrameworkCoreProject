@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DALModel", "DALModel\DALModel.csproj", "{57BD19D2-BCFB-4149-8DD9-42DFD6E8FE4F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresentationLayer", "PresentationLayer\PresentationLayer.csproj", "{F26FAAC4-4DB1-4227-9196-33EC8BA2FCDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{731FC54D-F4CD-4387-B8EC-D98D26D61917}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{57BD19D2-BCFB-4149-8DD9-42DFD6E8FE4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57BD19D2-BCFB-4149-8DD9-42DFD6E8FE4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57BD19D2-BCFB-4149-8DD9-42DFD6E8FE4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F26FAAC4-4DB1-4227-9196-33EC8BA2FCDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F26FAAC4-4DB1-4227-9196-33EC8BA2FCDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F26FAAC4-4DB1-4227-9196-33EC8BA2FCDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F26FAAC4-4DB1-4227-9196-33EC8BA2FCDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{731FC54D-F4CD-4387-B8EC-D98D26D61917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{731FC54D-F4CD-4387-B8EC-D98D26D61917}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{731FC54D-F4CD-4387-B8EC-D98D26D61917}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{731FC54D-F4CD-4387-B8EC-D98D26D61917}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

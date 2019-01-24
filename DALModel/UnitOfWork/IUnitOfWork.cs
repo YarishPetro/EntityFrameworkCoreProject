@@ -4,10 +4,11 @@ using System.Text;
 
 namespace DALModel
 {
-    interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         GenericRepository<Players> PlayersRepository { get; }
         GenericRepository<Teams> TeamsRepository { get; }
 
+        void Save();
     }
 }

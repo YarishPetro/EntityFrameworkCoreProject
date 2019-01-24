@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DALModel
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private TeamDBContext context = new TeamDBContext();
 

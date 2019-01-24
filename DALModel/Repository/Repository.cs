@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DALModel
 {
-    class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
         readonly TeamDBContext context;
         readonly DbSet<TEntity> dbSet;
@@ -65,6 +65,7 @@ namespace DALModel
             {
                 dbSet.Attach(entityToDelete);
             }
+
             dbSet.Remove(entityToDelete);
         }
 
