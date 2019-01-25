@@ -1,6 +1,4 @@
 ﻿using System;
-using DALModel;
-using BLL;
 
 namespace PresentationLayer
 {
@@ -8,107 +6,69 @@ namespace PresentationLayer
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("All players from all teams:\n");
-            GetAll();
+            bool isBeginning = true;
+            int input, id, teamId;
 
-            Clear();
-
-            #region Information about player by id
-
-            //Console.Write("Enter id of player to get information about him: ");
-            //int id = Convert.ToInt32(Console.ReadLine());
-            //GetPlayerById(id);
-            //Clear();
-
-            #endregion
-
-
-            #region Adding of new player
-            //Console.WriteLine("Adding of new player\n");
-            //Players newPlayer = new Players
-            //{
-            //    FirstName = "Daniel",
-            //    LastName = "Ceballos",
-            //    Position = "Middefender",
-            //    Age = 22,
-            //    TeamId = 2
-            //};
-
-            //AddPlayer(newPlayer);
-
-            //Console.WriteLine("New player has benn added!");
-            #endregion
-
-            MakeTransfer(4, 2);
-            Clear();
-
-            GetAll();
-
-            Clear();
-
-            Console.ReadKey();
-        }
-
-        static void Clear()
-        {
-            Console.WriteLine("\nPress Enter to continue");
-            Console.ReadKey();
-            Console.Clear();
-        }
-
-        static void GetAll()
-        {
-            using (UnitOfWork content = new UnitOfWork())
+            while (isBeginning)
             {
-                var players = content.PlayersRepository.Get(includeProperties: "Team");
-                foreach (Players player in players)
+                Presenter.Info();
+                input = Convert.ToInt32(Console.ReadLine());
+                Console.Clear();
+
+                switch (input)
                 {
-                    Console.WriteLine($"Id: {player.Id} FirstName: {player.FirstName} - LastName: {player.LastName} -> Position: {player.Position} - Age: {player.Age} \nTeam: {player.Team.Name} from {player.Team.Country}\n");
+                    case 1:
+                        {
+                            Console.WriteLine("All players from all teams:");
+                            Presenter.GetAll();
+                            Presenter.Clear();
+                        } break;
+
+                    case 2:
+                        {
+                            Console.Write("Enter player`s id: ");
+                            id = Convert.ToInt32(Console.ReadLine());
+                            Presenter.GetPlayerById(id);
+                            Presenter.Clear();
+                        } break;
+
+                    case 3:
+                        {
+                            Presenter.AddPlayer();
+                            Console.WriteLine("A new player was added!");
+                            Presenter.Clear();
+                        } break;
+
+                    case 4:
+                        {
+                            Console.Write("Enter player`s id: ");
+                            id = Convert.ToInt32(Console.ReadLine());
+                            Presenter.DeleteById(id);
+                            Console.WriteLine("The player was deleted!");
+                            Presenter.Clear();
+                        } break;
+
+                    case 5:
+                        {
+                            Console.Write("Enter player`s id: ");
+                            id = Convert.ToInt32(Console.ReadLine());
+
+
+                            Console.WriteLine("Choose player`s team:");
+                            Console.WriteLine("1. Dynamo Kyiv");
+                            Console.WriteLine("2. Real Madrid");
+                            teamId = Convert.ToInt32(Console.ReadLine());
+
+                            Presenter.MakeTransfer(id, teamId);
+                            Presenter.Clear();
+
+                        } break;
+
+                    case 6: isBeginning = false; break;
+
+                    default: Console.WriteLine("You have choosen incorrect option!!!\nPlease try once more"); break;
                 }
             }
-        }
-
-        static void GetPlayerById(int id)
-        {
-            using (UnitOfWork context = new UnitOfWork())
-            {
-                Players player = context.PlayersRepository.GetByID(id);
-
-                Console.WriteLine($"Id: {player.Id} FirstName: {player.FirstName} - LastName: {player.LastName} -> Position: {player.Position} - Age: {player.Age}");
-            }
-        }
-
-        static void AddPlayer(Players pl)
-        {
-            using (UnitOfWork context = new UnitOfWork())
-            {
-                context.PlayersRepository.Insert(pl);
-                context.Save();
-            }
-        }
-
-        public static void DeleteById(int id)
-        {
-            using (UnitOfWork context = new UnitOfWork())
-            {
-                context.PlayersRepository.Delete(id);
-                context.Save();
-            }
-        }
-
-        public static void MakeTransfer(int playerId, int teamId)
-        {
-            Transfer tr = new Transfer(new UnitOfWork());
-
-            try
-            {
-                tr.MakeTransfer(playerId, teamId);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
+        }    
     }
 }
